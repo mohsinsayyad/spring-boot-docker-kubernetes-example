@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app-tasks
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-app-tasks
+  template:
+    metadata:
+      labels:
+        app: spring-app-tasks
+    spec:
+      containers:
+        - name: spring-app-tasks
+          image: spring-app-tasks:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
